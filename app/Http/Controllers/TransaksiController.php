@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\karyawan;
+use App\transaksi;
+use App\pembeli;
 
-class KaryawanController extends Controller
+class TransaksiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,17 +15,20 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        $karyawan = karyawan::all();
-        return view('karyawan.index',compact('karyawan'));
+         $transaksi = transaksi::all();
+        return view('transaksi.index',compact('transaksi'));
     }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('karyawan.create');
+   {
+        $pembeli = pembeli::all();
+        $transaksi = transaksi::all();
+        return view('transaksi.create',compact('transaksi','pembeli'));
     }
 
     /**
@@ -34,15 +38,13 @@ class KaryawanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-   {
-        //
-        $karyawan = new karyawan;
-        $karyawan->nik=$request->a;
-        $karyawan->nama_karyawan=$request->b;
-        $karyawan->jabatan=$request->c;
-        $karyawan->save();
-        return redirect('karyawan');
-    }
+     {
+        $transaksi = new transaksi;
+        $transaksi->pembeli_id=$request->a;
+        $transaksi->tanggal=$request->b;
+        $transaksi->save();
+        return redirect('transaksi'); 
+           }
 
     /**
      * Display the specified resource.
@@ -51,11 +53,12 @@ class KaryawanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-   {
+     {
         //
-        $karyawan = karyawan::findOrFail($id);
-        return view('karyawan.show',compact('karyawan'));
+        $transaksi = transaksi::findOrFail($id);
+        return view('transaksi.show',compact('transaksi'));
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -63,10 +66,11 @@ class KaryawanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-     {
+    {
         //
-        $karyawan = karyawan::findOrFail($id);
-        return view('karyawan.edit',compact('karyawan'));
+        $pembeli = pembeli::all();
+        $transaksi = transaksi::findOrFail($id);
+        return view('transaksi.edit',compact('pembeli','transaksi'));
     }
 
     /**
@@ -77,14 +81,13 @@ class KaryawanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-     {
-        $karyawan = karyawan::findOrFail($id);
-        $karyawan->nik=$request->a;
-        $karyawan->nama_karyawan=$request->b;
-        $karyawan->jabatan=$request->c;
-        $karyawan->save();
-        return redirect('karyawan');
-    }
+    {
+        $transaksi = transaksi::findOrFail($id);
+        $transaksi->pembeli_id=$request->a;
+        $transaksi->tanggal=$request->b;
+        $transaksi->save();
+        return redirect('transaksi'); 
+     }
 
     /**
      * Remove the specified resource from storage.
@@ -93,9 +96,9 @@ class KaryawanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        $karyawan = karyawan::findOrFail($id);
-        $karyawan->delete();
-        return redirect('karyawan');
+     {
+        $transaksi = transaksi::findOrFail($id);
+        $transaksi->delete();
+        return redirect('transaksi');
     }
 }

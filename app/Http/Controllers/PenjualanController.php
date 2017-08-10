@@ -27,7 +27,8 @@ class PenjualanController extends Controller
      */
     public function create()
     {
-        //
+        $barang = barang::all();
+        return view('penjualan.create',compact('barang'));
     }
 
     /**
@@ -38,8 +39,14 @@ class PenjualanController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $barang = barang::all();
+        $penjualan = new penjualan;
+        $penjualan->barang_id=$request->a;
+        $penjualan->satuan=$request->b;
+        $penjualan->jumlah_beli=$request->c;
+        $penjualan->save();
+        return redirect('penjualan');   
+         }
 
     /**
      * Display the specified resource.

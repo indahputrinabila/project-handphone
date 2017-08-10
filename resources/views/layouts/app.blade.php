@@ -41,6 +41,8 @@
                         <li><a href="{{ route('barang.index') }}">Data Barang</a></li>
                         <li><a href="{{ route('penjualan.index') }}">Data Penjualan</a></li>
                         <li><a href="{{ route('karyawan.index') }}">Data Karyawan</a></li>
+                        <li><a href="{{ route('pembeli.index') }}">Data Pembeli</a></li>
+                        <li><a href="{{ route('transaksi.index') }}">Data Transaksi</a></li>
                         @endif
                     </ul>
 

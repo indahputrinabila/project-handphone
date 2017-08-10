@@ -2,34 +2,31 @@
 @section('content')
 <div class="container">
 <div class="row">	
-	<center><h1>Data Penjualan</h1></center>
+	<center><h1>Data Transaksi</h1></center>
 	<div class="panel panel-primary">
-		<div class="panel-heading">Data Penjualan
-		<div class="panel-title pull-right"><a href="/penjualan/create">
+		<div class="panel-heading">Data Transaksi
+		<div class="panel-title pull-right"><a href="/transaksi/create">
 		Tambah Data</a></div></div>
 		<div class="panel-body">
 			<table class="table">
 				<thead>
 					<tr>
-					<th>Nama Barang</th>
-						<th>Satuan</th>
-						<th>Jumlah Barang</th>
 						
+						<th>Tanggal</th>
+						<th>Nama Pembeli</th>
 						<th colspan="3">Action</th>
 					</tr>
 				</thead>
 				<tbody>
-				@foreach($penjualan as $data)
+				@foreach($transaksi as $data)
 					<tr>
-						
-												<td>{{$data->satuan}}</td>
-						<td>{{$data->jumlah_barang}}</td>
-						<td>{{$data->barang->nama_barang}}</td>
+						<td>{{$data->tanggal}}</td>
+						<td>{{$data->pembeli->nama_pembeli}}</td>
 						<td>
-							<a href="/penjualan/{{$data->id}}/edit" class="btn btn-warning">Edit</a></td>
+							<a href="/transaksi/{{$data->id}}/edit" class="btn btn-warning">Edit</a></td>
 							<td>
-							<a href="/penjualan/{{$data->id}}" class="btn btn-success">Show</a></td>
-							<td><form action="{{route('penjualan.destroy',$data->id)}}" method="post">
+							<a href="/transaksi/{{$data->id}}" class="btn btn-success">Show</a></td>
+							<td><form action="{{route('transaksi.destroy',$data->id)}}" method="post">
 								<input type="hidden" name="_method" value="DELETE">
 								<input type="hidden" name="_token">
 								<input type="submit" class="btn btn-danger" value="Delete">
