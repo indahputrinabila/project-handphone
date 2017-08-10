@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\barang;
 use Illuminate\Http\Request;
+use App\karyawan;
 
-
-class Tabel_barangController extends Controller
+class KaryawanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,20 +14,19 @@ class Tabel_barangController extends Controller
      */
     public function index()
     {
-        $barang = barang::all();
-        return view('barang.index',compact('barang'));
+        $karyawan = karyawan::all();
+        return view('karyawan.index',compact('karyawan'));
     }
-
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
-   {
-        return view('barang.create');
+    {
+        return view('karyawan.create');
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -36,17 +34,16 @@ class Tabel_barangController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+   {
         //
-        $barang = new barang;
-        $barang->nama_barang=$request->a;
-        $barang->satuan=$request->b;
-        $barang->jumlah_beli=$request->c;
-        $barang->harga_beli=$request->d;
-        $barang->harga_jual=$request->e;
-        $barang->save();
-        return redirect('barang');
+        $karyawan = new karyawan;
+        $karyawan->nik=$request->a;
+        $karyawan->nama_karyawan=$request->b;
+        $karyawan->jabatan=$request->c;
+        $karyawan->save();
+        return redirect('karyawan');
     }
+
     /**
      * Display the specified resource.
      *
@@ -54,10 +51,8 @@ class Tabel_barangController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-   {
+    {
         //
-        $barang = barang::findOrFail($id);
-        return view('barang.show',compact('barang'));
     }
 
     /**
@@ -67,10 +62,8 @@ class Tabel_barangController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-   {
+    {
         //
-        $barang = barang::findOrFail($id);
-        return view('barang.edit',compact('barang'));
     }
 
     /**
@@ -82,14 +75,7 @@ class Tabel_barangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $barang = barang::findOrFail($id);
-        $barang->nama_barang=$request->a;
-        $barang->satuan=$request->b;
-        $barang->jumlah_beli=$request->c;
-        $barang->harga_beli=$request->d;
-        $barang->harga_jual=$request->e;
-        $barang->save();
-        return redirect('barang');
+        //
     }
 
     /**
@@ -100,8 +86,6 @@ class Tabel_barangController extends Controller
      */
     public function destroy($id)
     {
-        $barang = barang::findOrFail($id);
-        $barang->delete();
-        return redirect('barang');
+        //
     }
 }

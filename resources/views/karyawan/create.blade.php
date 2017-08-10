@@ -2,35 +2,27 @@
 @section('content')
 <div class="container">
 <div class="row">
-	<center><h1>Data Barang</h1></center>
+	<center><h1>Data Karyawan</h1></center>
 	<div class="panel panel-primary">
-		<div class="panel-heading">Data Barang
+		<div class="panel-heading">Data Karyawan
 		<div class="panel-title pull-right">
 			<a href="{{URL::previous() }}">Kembali</a>
 		</div></div>
 
 		<div class="panel-body">
-			<form action="{{route('barang.store')}}" method="post">
+			<form action="{{route('karyawan.store')}}" method="post">
 				{{csrf_field()}}
 				<div class="form-group">
-					<label class="control-label">Nama Barang</label>
+					<label class="control-label">Nik</label>
 					<input type="text" name="a" class="form-control" required="">
 				</div>
 				<div class="form-group">
-					<label class="control-label">Satuan</label>
+					<label class="control-label">Nama Karyawan</label>
 					<input type="text" name="b" class="form-control" required="">
 				</div>
 				<div class="form-group">
-					<label class="control-label">Jumlah Beli</label>
+					<label class="control-label">Jabatan</label>
 					<input type="text" name="c" class="form-control" required="">
-				</div>
-				<div class="form-group">
-					<label class="control-label">Harga Jual</label>
-					<input type="text" name="d" class="form-control" required="">
-				</div>
-				<div class="form-group">
-					<label class="control-label">Harga Beli</label>
-					<input name="e" class="form-control" rows="10" required="">
 				</div>
 
 				<div class="form-group">

@@ -37,13 +37,11 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         @if (Auth::check())
-                        <li><a href="{{ url('/home') }}">Dashboard</a></li>
+                      
+                        <li><a href="{{ route('barang.index') }}">Data Barang</a></li>
+                        <li><a href="{{ route('penjualan.index') }}">Data Penjualan</a></li>
+                        <li><a href="{{ route('karyawan.index') }}">Data Karyawan</a></li>
                         @endif
-
-                        @role('admin')
-                    <li><a href="{{ route('barang.index') }}">Barang</a></li>
-                    <li><a href="{{ route('penjualan.index') }}">Penjualan</a></li>
-                    @endrole
                     </ul>
 
                     <!-- Right Side Of Navbar -->
